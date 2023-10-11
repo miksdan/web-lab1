@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="ru-RU">
+<head>
+    <meta charset="utf-8">
+    <title>Laboratory work №1</title>
+<style>
+
+        * {
+            text-align: center;
+            font-weight: normal;
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        /*Селекторы псевдо-классов*/
+        .form-button:hover {
+            opacity: 1;
+            background-color: #C1EEF5;
+        }
+
+        /*Селекторы элементов*/
+        footer, header {
+            font-family: cursive;
+            font-size: small;
+            justify-content: center;
+            padding: 3px;
+        }
+
+        .form-button {
+            padding: 1% 2%;
+            border: gainsboro;
+            text-align: center;
+            font-size: 14px;
+            margin: 2px 1px;
+            opacity: 0.7;
+            transition: 0.15s;
+            border-collapse: collapse;
+            border-radius: 6px 6px 6px 6px;
+        }
+
+        #form, .result-table {
+            width: 700px;
+            margin: 5px auto 170px auto;
+            padding: 10px;
+            background: #ffffff;
+            border-collapse: collapse;
+            border-radius: 9px 9px 9px 9px;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+        }
+
+        select {
+            cursor: pointer;
+        }
+
+        table {
+            border-collapse: collapse;
+            box-shadow: 0 5px 10px #e1e5ee;
+            background-color: white;
+            text-align: left;
+            overflow: hidden;
+        }
+
+        thead {
+            box-shadow: 0 3px 5px #e1e5ee;
+        }
+
+        th {
+            padding: 1rem 2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1rem;
+            font-size: 0.7rem;
+            font-weight: 900;
+        }
+
+        td {
+            padding: 1rem 2rem;
+        }
+
+        #outputTable tbody tr:nth-of-type(even) {
+            background-color: #f2f2f2;
+        }
+
+        #outputTable tbody tr:last-of-type {
+            border-bottom: 2px solid #10B1C9;
+        }
+
+        button {
+            cursor: pointer;
+        }
+        select, .input-text {
+            margin: 10% 0;
+            padding: 1%;
+        }
+
+        label {
+            margin: 1%;
+        }
+
+        /*Селекторы дочерних элементов*/
+        footer > p {
+            color: darkgray;
+        }
+        /*Селекторы атрибутов*/
+        input[type=button], input[type=radio] {
+            cursor: pointer;
+            vertical-align: middle;
+            text-align: center;
+        }
+
+        input[type=button], input[type=text] { width: 90% }
+        /*Свойство наследования*/
+        body {
+            font-family: Mukta, sans-serif;
+            height: 100vh;
+            display: grid;
+            justify-content: center;
+            align-items: center;
+            color: #4f546c;
+            font-size: 0.9rem;
+            background-color: #f9fbff;
+        }
+        /*Свойство каскадирования*/
+        footer {
+            background-color: #1C1C1C;
+            display: flex;
+            color: #bebabb;
+            bottom: 0;
+            width: 100%;
+            position: fixed;
+        }
+        /*css for figure*/
+
+        .graphic .rectangle {
+            fill: #10B1C9;
+            stroke: #0F0F0F;
+            fill-opacity: 0.3;
+        }
+        .graphic .triangle {
+            fill: #10B1C9;
+            stroke: #0F0F0F;
+            fill-opacity: 0.3;
+        }
+        .graphic .quarter {
+            fill: #10B1C9;
+            stroke: #0F0F0F;
+            fill-opacity: 0.3;
+        }
+        .graphic svg {
+            height: 300px;
+            width: 300px;
+        }
+
+        input {
+            margin: 10%;
+        }
+
+        [name=X] {
+            background: #e1e5ee; /* Цвет фона */
+            width: 50px; /* Ширина блока */
+            padding: 3px; /* Поля */
+            margin-top: 3px; /* Отступ сверху */
+            border: 1px solid #999; /* Параметры рамки */
+            box-sizing: border-box; /* Ширина блока с полями */
+            border-collapse: collapse;
+            border-radius: 6px 6px 6px 6px;
+        }
+        [name=X]:hover {
+            opacity: 1;
+            background-color: #C1EEF5;
+        }
+    </style>
+</head>
+<body>
+<header class="header">
+    <h1>Лабораторная работа №1, Вариант - 2479</h1>
+    <p>Мюгриев Даниил, P3214</p>
+</header>
+<form class="validateForm">
+    <table id="form" class="wrapper">
+        <thead>
+        <td colspan="5"><h3>Hit Checker</h3></td>
+        </thead>
+        <tbody>
+        <tr>
+            <td id="x-value-select">Select X:</td>
+            <td class="table">
+                <button type="button" value="-3" id="x1" name="X" onclick="set_X_value(id)">-3</button>
+                <button type="button" value="-2" id="x2" name="X" onclick="set_X_value(id)">-2</button>
+                <button type="button" value="-1" id="x3" name="X" onclick="set_X_value(id)">-1</button>
+                <button type="button" value="0" id="x4" name="X" onclick="set_X_value(id)">0</button>
+                <button type="button" value="1" id="x5" name="X" onclick="set_X_value(id)">1</button>
+                <button type="button" value="2" id="x6" name="X" onclick="set_X_value(id)">2</button>
+                <button type="button" value="3" id="x7" name="X" onclick="set_X_value(id)">3</button>
+                <button type="button" value="4" id="x8" name="X" onclick="set_X_value(id)">4</button>
+                <button type="button" value="5" id="x9" name="X" onclick="set_X_value(id)">5</button>
+            </td>
+            <td rowspan="3" class="graphic">
+                <svg>
+                    <line x1="0" y1="150"
+                          x2="300" y2="150"
+                          stroke="#000720"/>
+                    <line x1="150" y1="0"
+                          x2="150" y2="300"
+                          stroke="#000720"/>
+                    <line x1="270" y1="148"
+                          x2="270" y2="152"
+                          stroke="#000720"/>
+                    <text x="265" y="140">R</text>
+                    <line x1="210" y1="148"
+                          x2="210" y2="152"
+                          stroke="#000720"/>
+                    <text x="200" y="140">R/2</text>
+                    <line x1="90" y1="148"
+                          x2="90" y2="152"
+                          stroke="#000720"/>
+                    <text x="75" y="140">-R/2</text>
+                    <line x1="30" y1="148"
+                          x2="30" y2="152"
+                          stroke="#000720"/>
+                    <text x="20" y="140">-R</text>
+                    <line x1="148" y1="30"
+                          x2="152" y2="30"
+                          stroke="#000720"/>
+                    <text x="156" y="35">R</text>
+                    <line x1="148" y1="90"
+                          x2="152" y2="90"
+                          stroke="#000720"/>
+                    <text x="156" y="95">R/2</text>
+                    <line x1="148" y1="210"
+                          x2="152" y2="210"
+                          stroke="#000720"/>
+                    <text x="156" y="215">-R/2</text>
+                    <line x1="148" y1="270"
+                          x2="152" y2="270"
+                          stroke="#000720"/>
+                    <text x="156" y="275">-R</text>
+                    <polygon points="300,150 295,155 295, 145" fill="#000720" stroke="#000720"/>
+                    <polygon points="150,0 145,5 155,5"
+                             fill="#000720"
+                             stroke="#000720"/>
+                    <polygon class="triangle"
+                             points="90 150, 150 270, 150 150"/>
+                    <rect class="rectangle"
+                          x="150" y="30"
+                          width="60" height="120"/>
+                    <path class="quarter" d="
+                    M 270 150
+                    Q 270 270 150 270
+                    L 150 150
+                    Z"/>
+                    <circle id="pointer" r="5"
+                            cx="150" cy="150"
+                            fill="#AFFF57"
+                            stroke="#1C1C1C"
+                            visibility=""/>
+                </svg>
+            </td>
+        </tr>
+        <tr>
+            <td>Select Y:</td>
+            <td><input name="y-in"
+                       id="text"
+                       type="text"
+                       class="input-text"
+                       required
+                       maxlength="7"
+                       placeholder="Y ∈ (-3; 5)"></td>
+        </tr>
+        <tr>
+            <td id="r-value-select">Select R:</td>
+            <td class="input-box">
+                <label for="r1">1<input value="1" type="checkbox" name="r-in" id="r1"></label>
+                <label for="r2">1.5<input value="1.5" type="checkbox"  name="r-in" id="r2"></label>
+                <br>
+                <label for="r3">2<input value="2" type="checkbox" name="r-in" id="r3"></label>
+                <label for="r4">2.5<input value="2.5" type="checkbox" name="r-in" id="r4"></label>
+                <br>
+                <label for="r5">3<input value="3" type="checkbox" name="r-in" id="r5"></label>
+            </td>
+        </tr>
+        <tr><td colspan="3">
+            <button id="checkButton" type="button" class="form-button">Check</button>
+        </td></tr>
+        </tbody>
+        <tfoot>
+        <tr>
+            <td colspan="6" id="output">
+                <h4>
+                    <span class="notification">There are no results.</span>
+                </h4>
+            </td>
+        </tr>
+    </table>
+</form>
+<footer class="footer">
+    <p>© 2023, Университет ИТМО, факультет ПИиКТ, бывшая кафедра ВТ</p>
+</footer>
+<script src="validator.js"></script>
+<!--<script src="checkbox.js"></script>-->
+</body>
+</html>
